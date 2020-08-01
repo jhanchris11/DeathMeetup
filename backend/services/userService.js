@@ -1,10 +1,9 @@
 const User = require('../models/user');
-// const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt')
 
 exports.addUser = async (userRequest) => {
     const user = await new User(userRequest);
-    console.log(user)
-    // user.password = await bcrypt.hash()
+    user.password = await bcrypt.hashSync(userRequest.password, 12);
     await user.save();
 }
 

@@ -6,8 +6,9 @@ exports.addUser = async (req, res) => {
     let { state, errors } = handleError.withErrorRequest(req);
 
     if (state) return res.status(400).json({ error: errors.array() });
-
+    
     try {
+      
         await userService.addUser(req.body);
         res.json({ msg: 'User was added correctly' });
 
