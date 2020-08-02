@@ -1,23 +1,38 @@
 
 const handleError = require('../helpers/handleError');
 const userService = require('../services/userService');
-exports.addUser = async (req, res) => {
+
+exports.signUpUser = async (req, res) => {
 
     let { state, errors } = handleError.withErrorRequest(req);
 
     if (state) return res.status(400).json({ error: errors.array() });
-    
+
     try {
-      
-        await userService.addUser(req.body);
+
+        await userService.signUpUser(req.body);
         res.json({ msg: 'User was added correctly' });
 
     } catch (error) {
         res.status(400).send('Was there an error');
     }
 }
-exports.getUserById = async (req, res) => {
+exports.signInUser = async (req, res) => {
 
+    try {
+
+        const token = await userService.signInUser(req.body);
+
+        res.json({
+            token
+        });
+
+    } catch (error) {
+        res.status(400).send('Was there an error');
+    }
+}
+
+exports.getUserById = async (req, res) => {
 
     try {
         const user = await userService.getUserById(req.params.userId);

@@ -15,7 +15,7 @@ const SignUp = () => {
         await SignUpUser(values);
         setLoading(false);
         openNotification('Registrado satisfactoriamente', 'Bienvenido');
-        history.push("/h1");
+        history.push("/");
     };
 
     const openNotification = (message, description) => {
@@ -28,81 +28,84 @@ const SignUp = () => {
     };
 
     return (
-        <div className='card-signin'>
-            <div className="card-body-signin">
-                <div className='card-image-signin'>
-                    <img
-                        src={logoMeetup}
-                        alt="logo1"
-                        className="image-signin"
-                    />
-                    <h3
+        <div className='contenedor-signup'>
+            <div className='card-signin'>
+                <div className="card-body-signin">
+                    <div className='card-image-signin'>
+                        <img
+                            src={logoMeetup}
+                            alt="logo1"
+                            className="image-signin"
+                        />
+                        <h3
 
-                        style={{
-                            marginBottom: 50,
-                            textAlign: "center",
-                            fontSize: 27
-                        }}
-                    >
-                        Sistema Death Meetup
+                            style={{
+                                marginBottom: 50,
+                                textAlign: "center",
+                                fontSize: 27
+                            }}
+                        >
+                            Sistema Death Meetup
                         </h3>
-                </div>
+                    </div>
 
-                <Form
-                    style={{ width: "80%", margin: "auto" }}
-                    name="basic"
-                    initialValues={{}}
-                    onFinish={onFinish}
-                >
-                    <Form.Item
-                        name="name"
-                        rules={[
-                            { required: true, message: "Please insert your name!" }
-                        ]}
+                    <Form
+                        // style={{ width: "80%", margin: "auto" }}
+                        className='form-sign'
+                        name="basic"
+                        initialValues={{}}
+                        onFinish={onFinish}
                     >
-                        <Input placeholder="Insert your name" />
-                    </Form.Item>
-                    <Form.Item
-                        name="email"
-                        rules={[
-                            { type: "email", message: "email is not valid !" },
-                            { required: true, message: "Please insert your email !" }
-                        ]}
-                    >
-                        <Input placeholder="Insert your email" />
-                    </Form.Item>
+                        <Form.Item
+                            name="name"
+                            rules={[
+                                { required: true, message: "Please insert your name!" }
+                            ]}
+                        >
+                            <Input className='input' placeholder="Insert your name" />
+                        </Form.Item>
+                        <Form.Item
+                            name="email"
+                            rules={[
+                                { type: "email", message: "email is not valid !" },
+                                { required: true, message: "Please insert your email !" }
+                            ]}
+                        >
+                            <Input className='input' placeholder="Insert your email" />
+                        </Form.Item>
 
-                    <Form.Item
-                        name="password"
-                        rules={[
-                            {
-                                required: true,
-                                message: "Por favor ingrese su contraseña!"
-                            }
-                        ]}
-                        hasFeedback
-                    >
-                        <Input.Password placeholder="Insert your password" />
-                    </Form.Item>
+                        <Form.Item
+                            name="password"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: "Por favor ingrese su contraseña!"
+                                }
+                            ]}
+                            hasFeedback
+                        >
+                            <Input.Password className='input' placeholder="Insert your password" />
+                        </Form.Item>
 
-                    <Form.Item >
-                        <div className='card-btn-signin'>
-                            <Button
-                                loading={isLoading}
-                                className="col text-center"
-                                type="primary"
-                                htmlType="submit"
+                        <Form.Item >
+                            <div className='card-btn-signin'>
+                                <Button
+                                    loading={isLoading}
+                                    className="col text-center"
+                                    type="primary"
+                                    htmlType="submit"
 
-                            >
-                                Sign Up
+                                >
+                                    Sign Up
                     	</Button>
-                            <Button>
-                                <Link to="/">Sign In</Link>
-                            </Button>
-                        </div>
+                                <Button>
+                                    <Link to="/">Sign In</Link>
+                                </Button>
+                            </div>
 
-                    </Form.Item>
-                </Form>
+                        </Form.Item>
+                    </Form>
+                </div>
             </div>
         </div>
 
