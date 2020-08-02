@@ -9,6 +9,7 @@ import './App.css';
 import Meet from './pages/Meet';
 import SignUp from './components/Sign/SignUp';
 import SignIn from './components/Sign/SignIn';
+import Home from './components/Home/Home';
 
 function App() {
   return (
@@ -16,14 +17,15 @@ function App() {
       <Fragment>
         <Switch>
           <Route exact path='/' component={SignIn} />
-          <Route  path='/signup' component={SignUp} />
+          <Route path='/signup' component={SignUp} />
+          <Route path='/home' component={Home} />
           <Layout className='cl-layout'>
             <Aside />
             <Layout>
               <Header />
-              <Route  path='/main' component={Main} />
-              <Route  path='/meet' component={Meet} />
-              <Route  path='/profile' component={Profile} />
+              <Route path='/main' component={Main} />
+              <Route path='/meet' component={Meet} />
+              <Route path='/profile' component={Profile} />
             </Layout>
           </Layout>
         </Switch>

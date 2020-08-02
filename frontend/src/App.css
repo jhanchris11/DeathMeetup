@@ -27,6 +27,7 @@
 	background: rgba(255, 255, 255, 0.2);
 	margin: 16px;
 }
+
 .Search-Box {
 	display: flex;
 	align-items: center;
@@ -106,6 +107,38 @@ h3 {
 	width: 80%;
 }
 
+.nav-home {
+	/* text-decoration: none; */
+	display: flex;
+	width: 100%;
+	/* border:1px solid blue;
+	list-style: none; */
+	justify-content: space-between;
+	/* align-items: center; */
+	/* height: 80px; */
+}
+.logoHome {
+	float: left;
+}
+.container-show {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 30px;
+
+	border: 2px solid red;
+}
+.show-text {
+	border: 2px solid blue;
+	width: 500px;
+	text-align: center;
+	margin: auto;
+}
+
+.show-image {
+	border: 2px solid blueviolet;
+	margin: auto;
+}
 @media screen and (max-width: 400px) {
 	.input {
 		width: 250px;
