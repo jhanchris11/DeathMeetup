@@ -1,12 +1,12 @@
 const Event = require('../models/Event');
-const mongoose = require('mongoose');
+const managmentDataHelper = require('../helpers/managmentDataHelper');
 
 exports.getEvents = async () => {
   return await Event.find();
 };
 
 exports.getEventsPaginatedByFilter = async ({ filter, page, limit }) => {
-  filter = this.parsingFilterArray(filter);
+  filter = managmentDataHelper.parsingFilterArray(filter);
   let options =
     filter != undefined || filter != null ? { category: { $in: filter } } : {};
 
@@ -43,13 +43,3 @@ exports.insertEvent = async (eventRequest) => {
   return await event.save();
 };
 
-exports.parsingFilterArray = (filter) => {
-  if (filter != undefined || filter != null) {
-    let newArray = [];
-    filter.forEach((item) => {
-      newArray.push(mongoose.Types.ObjectId(item));
-    });
-    return newArray;
-  }
-  return filter;
-};
