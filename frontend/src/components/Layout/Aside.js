@@ -27,7 +27,7 @@ const Aside = () => {
                     <Link to='/Meet'>Meet</Link>
                 </Menu.Item>
                 <Menu.Item key="3" icon={<ProfileOutlined />}>
-                    <Link to='/profile'>Perfil</Link>
+                    <Link to='/profile'>Profile</Link>
                 </Menu.Item>
             </Menu>
         </Sider>
