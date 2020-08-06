@@ -8,7 +8,7 @@ exports.getEvents = async (req, res) => {
   } catch (error) {
     res.status(400).send(error);
   }
-};
+}; 
 
 exports.getEventsPaginatedByFilter = async (req, res) => {
   let { state, errors } = handleError.withErrorRequest(req);

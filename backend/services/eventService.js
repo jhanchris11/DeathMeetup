@@ -15,7 +15,10 @@ exports.getEventsPaginatedByFilter = async ({ filter, page, limit }) => {
       $match: options,
     },
     {
-      $lookup: {
+      $sort: { "releaseDate" : 1 }
+    },
+    {
+      $lookup: { 
         from: 'categories',
         localField: 'category',
         foreignField: '_id',
