@@ -1,6 +1,6 @@
 import React from "react";
 import { Menu, Badge, Layout } from "antd";
-import CustomDropDown from "../../CustomDropDown/CustomDropDown";
+import CustomDropDown from "../../shared/CustomDropDown/CustomDropDown";
 import { BellOutlined } from "@ant-design/icons";
 
 import logoMeetup from "../../../assets/logo_size.jpg";

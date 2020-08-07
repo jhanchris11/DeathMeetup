@@ -33,6 +33,7 @@ const Meet = () => {
                 filterArray={undefined}
                 fieldToGetData={"events"}
                 hasImage={true}
+                isSortedByDate={false}
               />
             </CustomCard>
 
@@ -50,6 +51,7 @@ const Meet = () => {
                 filterArray={undefined}
                 fieldToGetData={"events"}
                 hasImage={false}
+                isSortedByDate={false}
               />
             </CustomCard>
           </MeetContainer>

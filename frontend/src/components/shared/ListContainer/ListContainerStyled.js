@@ -5,3 +5,13 @@ export const PaginationContainer = styled.div`
   display: flex;
   justify-content: center;
 `;
+
+export const TitleContainer = styled.p`
+  width: 100%;
+  border-radius: 0.8em;
+  text-align: left;
+  padding: 15px;
+  background: whitesmoke;
+  font-weight: bold;
+  font-size: 1.3em;
+`;
