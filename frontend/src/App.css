@@ -3,6 +3,10 @@
 #root{
 	height: 100%;
 }
+.ant-card-body {
+	padding: 0px !important;
+	height: 100%;
+}
 .cl-content {
 	margin: 0;
 	background: #fff;

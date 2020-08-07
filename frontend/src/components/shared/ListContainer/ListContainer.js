@@ -85,7 +85,7 @@ const ListContainer = ({
             size="large"
             dataSource={items}
             renderItem={item => (
-              <Fragment>
+              <div style={{ padding: 15 }}>
                 {isSortedByDate && (typeof item == "string") && <TitleContainer>{converToDailyDate(item)}</TitleContainer>}
                 {(typeof item != "string") && (
                   <ListItem
@@ -94,7 +94,7 @@ const ListContainer = ({
                     isSortedByDate={isSortedByDate}
                   />
                 )}
-              </Fragment>
+              </div>
             )}
           />
 
@@ -110,7 +110,9 @@ const ListContainer = ({
           )}
 
           {isSortedByDate && filterFalseItem(items).length != itemsSize && (
-            <CustomButton parentCallBack={showMore} text={"Mostrar mas"}/>
+            <div style={{ display: "flex", justifyContent: "center", padding: 15 }}>
+              <CustomButton parentCallBack={showMore} text={"Mostrar mas"}/>
+            </div>
           )}
         </Fragment>
       )}

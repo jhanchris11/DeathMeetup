@@ -1,5 +1,6 @@
 const Event = require('../models/Event');
 const managmentDataHelper = require('../helpers/managmentDataHelper');
+const mongoose = require('mongoose');
 
 exports.getEvents = async () => {
   return await Event.find();
@@ -15,10 +16,10 @@ exports.getEventsPaginatedByFilter = async ({ filter, page, limit }) => {
       $match: options,
     },
     {
-      $sort: { "releaseDate" : 1 }
+      $sort: { releaseDate: 1 },
     },
     {
-      $lookup: { 
+      $lookup: {
         from: 'categories',
         localField: 'category',
         foreignField: '_id',
@@ -38,7 +39,40 @@ exports.getEventsPaginatedByFilter = async ({ filter, page, limit }) => {
 };
 
 exports.getEventById = async (eventId) => {
-  return await Event.findOne({ _id: eventId });
+  try {
+    let eventAggregate = await Event.aggregate([
+      {
+        $match: { _id: mongoose.Types.ObjectId(eventId) },
+      },
+      {
+        $lookup: {
+          from: 'categories',
+          localField: 'category',
+          foreignField: '_id',
+          as: 'category',
+        },
+      },
+      {
+        $unwind: '$category',
+      },
+      {
+        $lookup: {
+          from: 'professors',
+          localField: 'professor',
+          foreignField: '_id',
+          as: 'professor',
+        },
+      },
+      {
+        $unwind: '$professor',
+      },
+    ]);
+    eventAggregate[0]['professor']['additionalInformation'] = [{"key": "fullname" ,"value": eventAggregate[0]['professor']['fullName']},...eventAggregate[0]['professor']['additionalInformation']];
+    return eventAggregate[0];
+
+  } catch (error) {
+    throw new Error(error); 
+  }
 };
 
 exports.insertEvent = async (eventRequest) => {
@@ -46,3 +80,10 @@ exports.insertEvent = async (eventRequest) => {
   return await event.save();
 };
 
+exports.updateEventById = async (eventId, eventRequest) => {
+  return Event.findOneAndUpdate(
+    { _id: eventId },
+    { $set: eventRequest },
+    { new: true }
+  );
+};

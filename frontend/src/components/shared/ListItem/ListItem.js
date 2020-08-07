@@ -39,7 +39,7 @@ const ListItem = ({ item, hasImage, isSortedByDate }) => {
           }
         >
           <List.Item.Meta
-            title={<p>{item.title}</p>}
+            title={<a href={'/event/' + item._id}>{item.title}</a>}
             description={item.description}
           />
         </List.Item>

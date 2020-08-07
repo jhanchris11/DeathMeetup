@@ -34,6 +34,15 @@ exports.getEventById = async (req, res) => {
   }
 };
 
+exports.updateEventById = async (req, res) => {
+  try {
+    const event = await eventService.updateEventById(req.params.eventId,req.body);
+    res.json({ event });
+  } catch (error) {
+    res.status(400).send(error);
+  }
+};
+
 exports.insertEvent = async (req, res) => {
   let { state, errors } = handleError.withErrorRequest(req);
   if (state) return res.status(400).json({ error: errors.array() });
@@ -45,3 +54,4 @@ exports.insertEvent = async (req, res) => {
     res.status(400).send(error);
   }
 };
+
