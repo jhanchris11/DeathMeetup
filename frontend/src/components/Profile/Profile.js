@@ -1,22 +1,28 @@
-import React from 'react'
-import profile from '../../assets/profile.png'
-import { Card } from 'antd'
+import React from 'react';
+import profile from '../../assets/profile.png';
+import { Card } from 'antd';
 
-const { Meta } = Card
+const { Meta } = Card;
 
 const Profile = () => {
+	return (
+		<Card
+			title="Perfil"
+			hoverable
+			style={{
+				width: 400,
+				height: 400,
+				textAlign: 'center',
+				marginTop: '20px',
+				// display: 'flex',
+				// justifyContent: 'center',
+				// alignItems: 'center',
+			}}
+			cover={<img alt="example" src={profile} />}
+		>
+			<Meta title="Europe Street beat" description="www.instagram.com" />
+		</Card>
+	);
+};
 
-    return (
-
-        <Card
-            title='Perfil'
-            hoverable
-            style={{ width: 400, height: 400, textAlign: 'center' }}
-            cover={<img alt="example" src={profile} />}
-        >
-            <Meta title="Europe Street beat" description="www.instagram.com" />
-        </Card>
-    )
-}
-
-export default Profile
+export default Profile;
