@@ -1,6 +1,10 @@
 @import '~antd/dist/antd.css';
 
-
+body {
+	/* font-family: 'Roboto', sans-serif; */
+	font-family: 'Open Sans', sans-serif;
+	font-family: 'Roboto', sans-serif;
+}
 .cl-content {
 	margin: 0;
 	background: #fff;
@@ -53,7 +57,6 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 100vh;
 }
 .card-signin {
 	background-image: radial-gradient(#09f 1px, transparent 1px), radial-gradient(#09f 1px, transparent 1px);
@@ -98,38 +101,10 @@ h3 {
 	width: 80%;
 }
 
-.nav-home {
-	/* text-decoration: none; */
-	display: flex;
-	width: 100%;
-	/* border:1px solid blue;
-	list-style: none; */
-	justify-content: space-between;
-	/* align-items: center; */
-	/* height: 80px; */
-}
 .logoHome {
 	float: left;
 }
-.container-show {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	margin-top: 30px;
 
-	border: 2px solid red;
-}
-.show-text {
-	border: 2px solid blue;
-	width: 500px;
-	text-align: center;
-	margin: auto;
-}
-
-.show-image {
-	border: 2px solid blueviolet;
-	margin: auto;
-}
 @media screen and (max-width: 400px) {
 	.input {
 		width: 250px;

@@ -1,4 +1,4 @@
-const handleError = require('../helpers/handleError');
+
 const dynamicService = require('../services/dynamicService');
 
 exports.getItemsSize = async (req, res) => {

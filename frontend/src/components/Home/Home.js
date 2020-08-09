@@ -1,30 +1,82 @@
-import React from 'react'
+import React, { useContext, useEffect, Fragment } from 'react'
 import ImgHome from '../../assets/home.jpg'
-import { Layout, Menu } from 'antd'
+import { Layout, Menu, Card } from 'antd'
+
 import logo1 from '../../assets/logo1.png'
-const { Header } = Layout
+import Show from './ShowContent/Show'
+import Head from './Head/Head'
+import CustomCard from '../shared/CustomCard/CustomCard'
+import ListContainer from '../shared/ListContainer/ListContainer'
+import Categories from '../../components/Categories/Categories'
+import { MeetContainer } from '../../pages/Meet/MeetStyled'
+import contextCategory from '../../context/category/categoryContext'
+
+import FooterMain from '../Layout/Footer'
+import { ContainerEvent,ContainerCategory } from './HomeStyled'
+
 const Home = () => {
+    const { categories } = useContext(contextCategory)
+
+
     return (
-        <div className='container-home'>
-            <Header className='nav-home'>
-                <div className='logoHome'>
-                    <img src={logo1} width='55' height='55' />
+        <Fragment>
+            <Head />
+            <Show />
+            <ContainerEvent>
+                <h1>Eventos Cercanos</h1>
+                <h2>Descubre lo que pasará proximamente cerca de ti </h2>
+                <MeetContainer>
+                    <CustomCard
+                        headerCard={<Categories />}
+                        stylesCustom={{ width: "58%" }}
+                    >
+                        <ListContainer
+                            pageSize={5}
+                            model={"Event"}
+                            getItemsSizeEndpoint={"/dynamic/document-size"}
+                            getItemsEndpoint={"/event/pagination"}
+                            filterArray={undefined}
+                            fieldToGetData={"events"}
+                            hasImage={true}
+                        />
+                    </CustomCard>
+
+                    <CustomCard
+                        headerCard={
+                            <h4 style={{ color: "whitesmoke" }}>Related Events</h4>
+                        }
+                        stylesCustom={{ width: "35%" }}
+                    >
+                        <ListContainer
+                            pageSize={5}
+                            model={"Event"}
+                            getItemsSizeEndpoint={"/dynamic/document-size"}
+                            getItemsEndpoint={"/event/pagination"}
+                            filterArray={undefined}
+                            fieldToGetData={"events"}
+                            hasImage={false}
+                        />
+                    </CustomCard>
+                </MeetContainer>
+            </ContainerEvent>
+
+
+
+            <ContainerCategory>
+                <h1> Categorías</h1>
+                <h2>Explora grupos de temas en lo que estes interesado</h2>
+
+                <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: '20px' }}>
+                    {categories.map(category =>
+                        <Card title={category.label} bordered={true} style={{ width: 300 }}>
+                            <p>{category.value}</p>
+                        </Card>
+                    )}
                 </div>
-                <Menu theme="dark" mode="horizontal">
-                    <Menu.Item key='1'>SignIn</Menu.Item>
-                    <Menu.Item key='2'>SignUp</Menu.Item>
-                </Menu>
-            </Header>
-            <div className='container-show'>
-                <div className='show-text'>
-                    <h1 >Death Meetup</h1>
-                    <h2> Plataforma para compartir conocimientos de tecnlogia, deporte , cultura de manera gratuita 🤝🏿 creado por el grupo Evil 4</h2>
-                </div>
-                <div className='show-image'>
-                    <img src={ImgHome} width='750px' height='550px' />
-                </div>
-            </div>
-        </div>
+            </ContainerCategory>
+            <FooterMain />
+        </Fragment>
+
     )
 }
 

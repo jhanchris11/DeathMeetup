@@ -41,10 +41,12 @@ const ListContainer = ({
 
   const handleGetItems = async (page, limit, filterArray) => {
     let { data } = await getItems(getItemsEndpoint, page, limit, filterArray);
+ 
     setItems(data[fieldToGetData]);
   };
 
   const handleGetItemsSize = async model => {
+ 
     let { data } = await getItemsSize(getItemsSizeEndpoint, model);
     setItemsSize(data["documentSize"]["size"]);
   };
