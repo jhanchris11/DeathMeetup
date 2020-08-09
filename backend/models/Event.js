@@ -25,6 +25,10 @@ const eventSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Category',
   },
+  professor: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Professor',
+  },
   createdAt: {
     type: Date,
     required: false,

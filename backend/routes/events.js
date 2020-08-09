@@ -13,6 +13,7 @@ router.post(
   eventsController.getEventsPaginatedByFilter
 );
 router.get('/:eventId', eventsController.getEventById);
+router.put('/:eventId', eventsController.updateEventById);
 router.post(
   '/',
   [

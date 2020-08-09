@@ -1,28 +1,16 @@
 @import '~antd/dist/antd.css';
 
 body {
-	/* font-family: 'Roboto', sans-serif; */
 	font-family: 'Open Sans', sans-serif;
 	font-family: 'Roboto', sans-serif;
 }
-.cl-content {
-	margin: 0;
-	background: #fff;
-}
-.cl-content-bg {
-	width: 100%;
-	min-height: 100vh;
-	padding: 50px;
+
+.cl-layout {
+	height: 100%;
 }
 .cl-footer {
 	text-align: center;
 }
-.logo {
-	height: 32px;
-	background: rgba(255, 255, 255, 0.2);
-	margin: 16px;
-}
-
 .Search-Box {
 	display: flex;
 	align-items: center;
