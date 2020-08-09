@@ -40,6 +40,10 @@ const eventSchema = new Schema({
     required: false,
     default: null,
   },
+  videoUrl: {
+    type: String,
+    required: false,
+  },
 });
 
 eventSchema.plugin(mongooseAggregatePaginate);
