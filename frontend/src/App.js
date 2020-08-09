@@ -10,6 +10,8 @@ import Meet from "./pages/Meet/Meet";
 import SignUp from "./components/Sign/SignUp";
 import SignIn from "./components/Sign/SignIn";
 import CategoryState from "./context/category/categoryState";
+import Home from "./pages/Home/Home";
+import EventDetails from "./pages/EventDetails/EventDetails";
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
                 <Header />
                 <Route path="/main" component={Main} />
                 <Route path="/meet" component={Meet} />
+                <Route path="/home" component={Home} />
+                <Route path="/event/:eventId" component={EventDetails} />
                 <Route path="/profile" component={Profile} />
               </Layout>
             </Layout>
