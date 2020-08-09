@@ -1,11 +1,9 @@
 @import '~antd/dist/antd.css';
 
-#root{
-	height: 100%;
-}
-.ant-card-body {
-	padding: 0px !important;
-	height: 100%;
+body {
+	/* font-family: 'Roboto', sans-serif; */
+	font-family: 'Open Sans', sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 .cl-content {
 	margin: 0;
@@ -28,6 +26,7 @@
 	background: rgba(255, 255, 255, 0.2);
 	margin: 16px;
 }
+
 .Search-Box {
 	display: flex;
 	align-items: center;
@@ -62,7 +61,6 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 100vh;
 }
 .card-signin {
 	background-image: radial-gradient(#09f 1px, transparent 1px), radial-gradient(#09f 1px, transparent 1px);
@@ -107,8 +105,8 @@ h3 {
 	width: 80%;
 }
 
-.ant-layout-header {
-    line-height: 0px;
+.logoHome {
+	float: left;
 }
 
 @media screen and (max-width: 400px) {

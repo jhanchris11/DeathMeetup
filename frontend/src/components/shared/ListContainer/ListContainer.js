@@ -68,6 +68,7 @@ const ListContainer = ({
   };
 
   const handleGetItemsSize = async model => {
+ 
     let { data } = await getItemsSize(getItemsSizeEndpoint, model);
     setItemsSize(data["documentSize"]["size"]);
   };

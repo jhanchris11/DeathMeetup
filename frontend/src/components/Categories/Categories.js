@@ -8,18 +8,20 @@ import contextCategory from '../../context/category/categoryContext';
 const CheckboxGroup = Checkbox.Group;
 
 const Categories = () => {
-  const { categories,categoriesSelected,setCategories,setCategoriesSelected } = useContext(contextCategory);
+  const { categories, categoriesSelected, setCategories, setCategoriesSelected } = useContext(contextCategory);
 
   const [indeterminate, setIndeterminate] = useState(true);
   const [checkAll, setCheckAll] = useState(false);
 
-  useEffect(()=>{
+  useEffect(() => {
     handleCategories();
-  },[]);
+  }, []);
 
   const handleCategories = async () => {
     let { data } = await getCategories();
+    console.log(data)
     let categoriesParsed = parsingCategories(data['categories'])
+    console.log(categoriesParsed)
     setCategories(categoriesParsed);
   }
 
