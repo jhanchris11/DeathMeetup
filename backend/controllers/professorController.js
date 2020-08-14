@@ -9,3 +9,12 @@ exports.insertProfessor = async (req, res) => {
     res.status(400).send(error);
   }
 };
+
+exports.getProfessorByCategoryId = async (req, res) => {
+  try {
+    const professor = await professorService.getProfessorByCategory(req.params.categoryId);
+    res.json({ professor });
+  } catch (error) {
+    res.status(400).send(error);
+  }
+};

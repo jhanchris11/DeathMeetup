@@ -11,5 +11,6 @@ router.post(
   ],
   professorController.insertProfessor
 );
+router.get('/:categoryId', professorController.getProfessorByCategoryId);
 
 module.exports = router;

@@ -9,7 +9,15 @@ const professorSchema = new Schema({
   },
   urlImage: {
     type: String,
+    required: false,
+  },
+  urlVideo: {
+    type: String,
     required: true,
+  },
+  category: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Category',
   },
   additionalInformation: {
     type: [Schema.Types.Mixed],
