@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import profile from '../../assets/profile.png';
 import { Card } from 'antd';
+import { GetUsers } from '../../services/userService';
 
 const { Meta } = Card;
 
 const Profile = () => {
+	useEffect(() => {
+		getUsers();
+	}, []);
+
+	const getUsers = async () => {
+		const { data } = await GetUsers();
+		console.log(data);
+	};
+
 	return (
 		<Card
 			title="Perfil"

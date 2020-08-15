@@ -18,6 +18,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.26",
     "mongoose-aggregate-paginate-v2": "^1.0.42",
+    "nodemailer": "^6.4.11",
+    "socket.io": "^2.3.0",
     "twilio": "^3.48.1"
   },
   "devDependencies": {

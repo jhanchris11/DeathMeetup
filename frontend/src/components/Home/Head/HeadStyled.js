@@ -21,5 +21,5 @@ export const NavHome = styled.div`
 	align-items: center;
 	height: 80px;
 	color: rgba(0, 0, 0, 0.65);
-	background: #001529;
+	background: #8bb6fb;
 `;

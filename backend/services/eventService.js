@@ -67,11 +67,13 @@ exports.getEventById = async (eventId) => {
         $unwind: '$professor',
       },
     ]);
-    eventAggregate[0]['professor']['additionalInformation'] = [{"key": "fullname" ,"value": eventAggregate[0]['professor']['fullName']},...eventAggregate[0]['professor']['additionalInformation']];
+    eventAggregate[0]['professor']['additionalInformation'] = [
+      { key: 'fullname', value: eventAggregate[0]['professor']['fullName'] },
+      ...eventAggregate[0]['professor']['additionalInformation'],
+    ];
     return eventAggregate[0];
-
   } catch (error) {
-    throw new Error(error); 
+    throw new Error(error);
   }
 };
 

@@ -2,16 +2,17 @@ import React, { useState, useContext, Fragment, useEffect } from 'react';
 import { Form, Input, Button, notification } from 'antd';
 import { useHistory } from 'react-router-dom';
 import { SignInUser } from '../../services/userService';
-import logoMeetup from '../../assets/logo_size.jpg';
+import logo1 from '../../assets/logo1.png';
 import { Link } from 'react-router-dom';
 import { Modal } from 'antd';
 import SignUp from './SignUp';
+import contextCategory from '../../context/category/categoryContext';
 
 const SignIn = ({ parentCallbackShow1, visible1, parentCallbackCancel1 }) => {
 	const [visible2, setVisible2] = useState(false);
 	const [isLoading, setLoading] = useState(false);
+	const { user, setUser } = useContext(contextCategory);
 	const history = useHistory();
-
 	const openNotification = (message, description) => {
 		const args = {
 			message: message,
@@ -20,12 +21,8 @@ const SignIn = ({ parentCallbackShow1, visible1, parentCallbackCancel1 }) => {
 		};
 		notification.success(args);
 	};
-	// useEffect(() => {
-	//     handleCancelSignUp()
-	// }, [visible2])
 	const handleCancel = () => {
 		parentCallbackCancel1();
-		// parentCallbackCancel2()
 	};
 
 	const handlerVisible = () => {
@@ -34,9 +31,19 @@ const SignIn = ({ parentCallbackShow1, visible1, parentCallbackCancel1 }) => {
 
 	const onFinish = async (values) => {
 		setLoading(true);
-
+		console.log(values);
 		setTimeout(async () => {
-			await SignInUser(values);
+			const answer = await SignInUser(values);
+			console.log(answer);
+			const { token, id, name } = answer.data;
+			console.log(token);
+			localStorage.setItem('token', token);
+			localStorage.setItem('userId', id);
+			localStorage.setItem('name', name);
+			setUser({
+				token,
+				auth: true,
+			});
 			setLoading(false);
 			handlerVisible(false);
 			openNotification('Registrado satisfactoriamente', 'Bienvenido');
@@ -47,29 +54,35 @@ const SignIn = ({ parentCallbackShow1, visible1, parentCallbackCancel1 }) => {
 	const showModalSignUp = () => {
 		setVisible2(true);
 		parentCallbackCancel1();
-		// parentCallbackCancel2()
 	};
 
 	const handleCancelSignUp = () => {
 		setVisible2(false);
 		parentCallbackCancel1();
 	};
+
 	return (
 		<Fragment>
-			<Modal visible={visible1} title="Title" onOk={onFinish} onCancel={handleCancel} footer={false}>
+			<Modal
+				visible={visible1}
+				title="🤝🏿"
+				style={{ textAlign: 'center' }}
+				onOk={onFinish}
+				onCancel={handleCancel}
+				footer={false}
+			>
 				<div className="contenedor-signin">
 					<div className="card-signin">
 						<div className="card-body-signin">
 							<div className="card-image-signin">
-								<img src={logoMeetup} alt="logo1" className="image-signin" />
+								<img src={logo1} alt="logo1" className="image-signin" />
 								<h3
 									style={{
-										marginBottom: 50,
 										textAlign: 'center',
 										fontSize: 27,
 									}}
 								>
-									Sistema Death Meetup
+									Meet Learning
 								</h3>
 							</div>
 
@@ -101,8 +114,7 @@ const SignIn = ({ parentCallbackShow1, visible1, parentCallbackCancel1 }) => {
 									<div className="card-btn-signin">
 										<Button
 											loading={isLoading}
-											className="col text-center"
-											type="primary"
+											style={{ background: '#8bb6fb', color: 'whitesmoke' }}
 											htmlType="submit"
 										>
 											Sign In

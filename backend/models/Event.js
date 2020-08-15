@@ -48,6 +48,14 @@ const eventSchema = new Schema({
     type: String,
     required: false,
   },
+  like: {
+    type: Number,
+    required: false,
+  },
+  dislike: {
+    type: Number,
+    required: false,
+  },
 });
 
 eventSchema.plugin(mongooseAggregatePaginate);

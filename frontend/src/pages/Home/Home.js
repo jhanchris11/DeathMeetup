@@ -1,7 +1,6 @@
 import React, { Fragment, useContext } from 'react';
 
 import { Card } from 'antd';
-
 import Head from '../../components/Home/Head/Head';
 import Show from '../../components/Home/ShowContent/Show';
 import { ContainerEvent, ContainerCategory } from './HomeStyled';
@@ -13,15 +12,16 @@ import Categories from '../../components/Categories/Categories';
 import contextCategory from '../../context/category/categoryContext';
 import { MeetContainer } from '../../pages/Meet/MeetStyled';
 
-import Footer from '../../components/Layout/Footer';
+import Footer from '../../components/Layout/Footer/Footer';
 const Home = () => {
 	const { categories } = useContext(contextCategory);
+
 	return (
 		<Fragment>
 			<Head />
 			<Show />
 			<ContainerEvent>
-				<h1>Eventos Cercanos</h1>
+				<h1>Eventos</h1>
 				<h2>Descubre lo que pasará proximamente cerca de ti </h2>
 				<MeetContainer>
 					<CustomCard headerCard={<Categories />} stylesCustom={{ width: '58%' }}>
@@ -37,7 +37,7 @@ const Home = () => {
 					</CustomCard>
 
 					<CustomCard
-						headerCard={<h4 style={{ color: 'whitesmoke' }}>Related Events</h4>}
+						headerCard={<h4 style={{ color: 'whitesmoke' }}>Eventos más populares</h4>}
 						stylesCustom={{ width: '35%' }}
 					>
 						<ListContainer
@@ -60,7 +60,7 @@ const Home = () => {
 				<div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: '20px' }}>
 					{categories.map((category) => (
 						<Card title={category.label} bordered={true} style={{ width: 300 }}>
-							<p>{category.value}</p>
+							<img src={category.url} alt={categories.value} width="250" />
 						</Card>
 					))}
 				</div>

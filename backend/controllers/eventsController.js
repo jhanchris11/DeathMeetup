@@ -8,7 +8,7 @@ exports.getEvents = async (req, res) => {
   } catch (error) {
     res.status(400).send(error);
   }
-}; 
+};
 
 exports.getEventsPaginatedByFilter = async (req, res) => {
   let { state, errors } = handleError.withErrorRequest(req);
@@ -36,7 +36,10 @@ exports.getEventById = async (req, res) => {
 
 exports.updateEventById = async (req, res) => {
   try {
-    const event = await eventService.updateEventById(req.params.eventId,req.body);
+    const event = await eventService.updateEventById(
+      req.params.eventId,
+      req.body
+    );
     res.json({ event });
   } catch (error) {
     res.status(400).send(error);
@@ -54,4 +57,3 @@ exports.insertEvent = async (req, res) => {
     res.status(400).send(error);
   }
 };
-
