@@ -44,4 +44,4 @@ const eventSchema = new Schema({
 
 eventSchema.plugin(mongooseAggregatePaginate);
 
-module.exports = mongoose.model('Event', eventSchema);
+module.exports = mongoose.model('rating', eventSchema);
